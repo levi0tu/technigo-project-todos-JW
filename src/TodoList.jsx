@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { AppContext } from "./contexts/ListContext.jsx";
+import { TodoContext } from "./contexts/TodoContext.jsx"
 
 const TodoList = () => {
-    const { todos = [], toggleTodo, removeTodo } = useContext(AppContext);
+    const { todos = [], toggleTodo, removeTodo } = useContext(TodoContext);
     const remainingCount = todos.filter((todo) => !todo.completed).length;
 
     return (
