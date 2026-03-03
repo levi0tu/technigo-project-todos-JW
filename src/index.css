@@ -6,9 +6,51 @@
 
 body {
   margin: 0;
+  background: #ffffff;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.form-section {
+  padding: 1rem;
+}
+
+.todo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.todo-input {
+  width: 100%;
+  min-height: 50px;
+  border: 1px solid #f3c6d3;
+  border-radius: 10px;
+  background: #fdebf1;
+  font-size: 1rem;
+}
+
+.todo-submit {
+  align-self: center;
+  border: none;
+  min-height: 30px;
+  border-radius: 10px;
+  background: #f782a9;
+  color: white;
+}
+
+.todo-input:focus,
+.todo-input:focus-visible {
+  border-color: #a55670;
+}
+
+@media (min-width: 768px) {
+  .form-section {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 2rem 1rem 1rem;
+  }
 }
