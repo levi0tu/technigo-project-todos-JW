@@ -7,7 +7,6 @@ export const App = () => {
   return (
     <TodoProvider>
       <div>
-        <h1>To Do</h1>
         <TodoForm />
         <TodoList />
       </div>

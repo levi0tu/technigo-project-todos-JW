@@ -6,24 +6,29 @@ const TodoList = () => {
     const remainingCount = todos.filter((todo) => !todo.completed).length;
 
     return (
-        <section className="agenda">
-            <div className="day-header">
+        <section className="header">
+            <div className="tasks-header">
+                <h2>To Do</h2>
                 <p><span className="today-dot"></span></p>
             </div>
 
-            {todos.map((todo) => (
-                <div key={todo.id} className="todo-row">
-                    <label className={`todo-label ${todo.completed ? "is-done" : ""}`}>
-                        <input
-                            type="checkbox"
-                            checked={todo.completed}
-                            onChange={() => toggleTodo(todo.id)}
-                        />
-                        <span>{todo.text}</span>
-                        <button className="remove" onClick={() => removeTodo(todo.id)}>Remove</button>
-                    </label>
-                </div>
-            ))}
+            <div className="task-list">
+                {todos.map((todo) => (
+                    <article key={todo.id} className={`task-card ${todo.completed ? "is-done" : ""}`}>
+                        <div className="task-content">
+                            <h3>{todo.text}</h3>
+                        </div>
+                        <button
+                            type="button"
+                            className="check-btn"
+                            onClick={() => toggleTodo(todo.id)}
+                            aria-label={`Mark ${todo.text} as ${todo.completed ? "not done" : "done"}`}
+                        >
+                            {todo.completed ? "✓" : ""}
+                        </button>
+                    </article>
+                ))}
+            </div>
             <p>Total: {todos.length} Remaining: {remainingCount}</p>
         </section>
     )
