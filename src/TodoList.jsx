@@ -1,5 +1,9 @@
 import { useContext } from "react";
 import { TodoContext } from "./contexts/TodoContext.jsx"
+import moment from "moment";
+import "moment/locale/sv";
+
+moment.locale("sv");
 
 const TodoList = () => {
     const { todos = [], toggleTodo, removeTodo } = useContext(TodoContext);
@@ -17,6 +21,9 @@ const TodoList = () => {
                     <article key={todo.id} className={`task-card ${todo.completed ? "is-done" : ""}`}>
                         <div className="task-content">
                             <h3>{todo.text}</h3>
+                            <p className="task-time">
+                                Skapad: {moment(todo.createdAt).format("D MMM YYYY, HH:mm")}
+                            </p>
                         </div>
                         <button
                             type="button"

@@ -3,14 +3,30 @@ import { createContext, useState } from "react";
 export const TodoContext = createContext();
 
 const startData = [
-    { id: 1, text: "First task", completed: false }
+    {
+        id: 1,
+        text: "First task",
+        completed: false,
+        createdAt: new Date().toISOString()
+    }
 ];
 
 export const TodoProvider = ({ children }) => {
     const [todos, setTodos] = useState(startData);
 
     const addTodo = (text) => {
-        setTodos((prev) => [...prev, { id: Date.now(), text, completed: false }]);
+        const trimmed = text.trim();
+        if (!trimmed) return;
+
+        setTodos((prevTodos) => [
+            ...prevTodos,
+            {
+                id: Date.now(),
+                text: trimmed,
+                completed: false,
+                createdAt: new Date().toISOString()
+            }
+        ]);
     };
     const toggleTodo = (id) => {
         setTodos((prevTodos) =>
